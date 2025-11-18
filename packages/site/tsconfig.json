@@ -1,0 +1,9 @@
+{
+  "extends": ["@workspace/typescript-config/base.json", "astro/tsconfigs/strict"],
+  "compilerOptions": {
+    "declaration": false,
+    "declarationMap": false
+  },
+  "include": [".astro/types.d.ts", "*.config.ts", "src", "test"],
+  "exclude": ["node_modules", "dist"]
+}

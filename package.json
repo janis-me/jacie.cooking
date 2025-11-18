@@ -1,10 +1,11 @@
 {
-  "name": "@janis.me/repo-starter",
+  "name": "jacie.cooking",
   "description": "A starter template for pnpm-based web repositories",
   "keywords": [
-    "janis.me"
+    "cooking",
+    "jacie"
   ],
-  "homepage": "https://janis.me",
+  "homepage": "https://jacie.cooking",
   "license": "MIT",
   "author": "Janis Jansen",
   "type": "module",
@@ -28,8 +29,18 @@
     "typescript": "catalog:build",
     "vitest": "catalog:test"
   },
-  "packageManager": "pnpm@10.19.0",
+  "packageManager": "pnpm@10.22.0",
   "engines": {
     "node": ">=22.11.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "sharp": "catalog:build",
+      "vite": "catalog:build"
+    },
+    "ignoredBuiltDependencies": [
+      "esbuild",
+      "sharp"
+    ]
   }
 }

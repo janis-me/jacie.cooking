@@ -4,28 +4,57 @@ packages:
 
 ignoredBuiltDependencies:
   - esbuild
+  - sharp
+
+supportedArchitectures:
+  os:
+    - linux
+  cpu:
+    - x64
+    - arm64
+  libc:
+    - musl
+    - glibc
 
 catalogs:
   build:
-    vite: ^6.4.1
+    vite: ^7.2.2
+    "@astrojs/rss": "^4.0.13"
+    "@astrojs/sitemap": "^3.6.0"
+    "astro": "^5.15.9"
+    "astro-webmanifest": "^1.0.0"
+    cssnano: ^7.1.2
+    "sharp": "^0.34.5"
+    "@brandonaaron/astro-script-embed": "^1.0.3"
+    postcss: ^8.5.6
     typescript: ^5.9.3
+    "surimi": "^0.6.0"
+    "sanitize-html": "^2.17.0"
+    "vite-plugin-surimi": "^0.4.0"
+    "@janis.me/themed": "0.2.2"
   format:
-    '@ianvs/prettier-plugin-sort-imports': ^4.7.0
+    "@ianvs/prettier-plugin-sort-imports": ^4.7.0
     prettier-plugin-packagejson: ^2.5.19
     prettier: ^3.6.2
   lint:
-    '@eslint/js': ^9.38.0
-    '@eslint/eslintrc': ^3.3.1
-    eslint-plugin-react-hooks: ^5.2.0
+    "@eslint/js": ^9.39.1
+    "@eslint/eslintrc": ^3.3.1
+    eslint-plugin-react-hooks: ^7.0.1
     eslint-plugin-react: ^7.37.5
-    eslint: ^9.38.0
-    typescript-eslint: ^8.46.2
+    eslint: ^9.39.1
+    typescript-eslint: ^8.47.0
     jiti: ^2.6.1
   test:
-    vitest: ^3.2.4
-    '@vitest/browser': ^3.2.4
-    '@playwright/test': ^1.56.1
+    vitest: ^4.0.10
+    "@vitest/browser": ^4.0.10
+    "@playwright/test": ^1.56.1
   types:
-    '@types/node': ^22.18.12
+    "@types/node": ^22.19.1
+    "@types/sanitize-html": ^2.16.0
   script:
-    'taze': '^19.8.1'
+    "taze": "^19.9.0"
+  fonts:
+    "@fontsource/lily-script-one": "^5.2.8"
+    "@fortawesome/fontawesome-svg-core": "^7.1.0"
+    "@fortawesome/free-brands-svg-icons": "^7.1.0"
+    "@fortawesome/free-solid-svg-icons": "^7.1.0"

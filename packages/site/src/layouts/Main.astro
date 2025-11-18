@@ -1,0 +1,30 @@
+---
+import '@fontsource/lily-script-one';
+
+const { title, description } = Astro.props;
+
+const metaDescription = description || 'jacie.cooking';
+---
+
+<html lang="en" data-theme="janis-light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={metaDescription} />
+    <meta name="keywords" content="Jacie, cooking, food, blog, recipes, janis jansen, janis.me" />
+    <meta name="robots" content="index, follow, max-snippet:[120], max-image-preview:[large]" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <title>{title}</title>
+
+    <script src="#client.ts" is:inline is:embeded></script>
+  </head>
+
+  <body>
+    <main class="container">
+      <slot />
+    </main>
+  </body>
+</html>

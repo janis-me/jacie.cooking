@@ -1,0 +1,43 @@
+{
+  "name": "jacie.cooking",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "imports": {
+    "#*": [
+      "./src/*",
+      "./src/*.ts",
+      "./src/*.tsx",
+      "./src/*/index.ts"
+    ]
+  },
+  "scripts": {
+    "astro": "astro",
+    "build": "astro build",
+    "dev": "astro dev",
+    "preview": "astro preview"
+  },
+  "devDependencies": {
+    "@astrojs/rss": "catalog:build",
+    "@astrojs/sitemap": "catalog:build",
+    "@brandonaaron/astro-script-embed": "catalog:build",
+    "@fontsource/lily-script-one": "catalog:fonts",
+    "@fortawesome/fontawesome-svg-core": "catalog:fonts",
+    "@fortawesome/free-brands-svg-icons": "catalog:fonts",
+    "@fortawesome/free-solid-svg-icons": "catalog:fonts",
+    "@janis.me/themed": "catalog:build",
+    "@types/node": "catalog:types",
+    "@types/sanitize-html": "catalog:types",
+    "@workspace/linter-config": "workspace:*",
+    "@workspace/typescript-config": "workspace:*",
+    "astro": "catalog:build",
+    "astro-webmanifest": "catalog:build",
+    "cssnano": "catalog:build",
+    "postcss": "catalog:build",
+    "sanitize-html": "catalog:build",
+    "sharp": "catalog:build",
+    "surimi": "catalog:build",
+    "typescript": "catalog:build",
+    "vite-plugin-surimi": "catalog:build"
+  }
+}
