@@ -2,11 +2,12 @@ import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
 const recipeSchema = z.object({
-  title: z.string(),
-  description: z.string().optional(),
-  layout: z.string().optional(),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
+  title: z.string(),
+  description: z.string(),
+  coverImage: z.string(),
+  layout: z.string().optional(),
   published: z.boolean().default(false),
   tags: z.array(z.string()),
 });

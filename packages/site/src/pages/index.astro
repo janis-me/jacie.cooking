@@ -14,7 +14,7 @@ const recipes = await getCollection('recipes');
   <section class="home-content">
     {
       recipes.map(recipe => (
-        <article class="recipe-card">
+        <article class="recipe-card" style={`background-image: url(${recipe.data.coverImage})`}>
           <a href={`/recipes/${recipe.id}`} class="recipe-link">
             <h2 class="recipe-title">{recipe.data.title}</h2>
             {recipe.data.description && <p class="recipe-description">{recipe.data.description}</p>}
@@ -22,5 +22,21 @@ const recipes = await getCollection('recipes');
         </article>
       ))
     }
+  </section>
+  
+  <section class="bottom-section">
+    <div class="bottom-waves"></div>
+    <div class="bottom-content">
+      <h2>Willkommen bei Jacie's Küche! 🍪</h2>
+      <p>
+        Hier findest du leckere Rezepte, die mit Liebe kreiert wurden. 
+        Von klassischen Cookies bis hin zu kreativen Backideen – 
+        lass dich inspirieren und probiere neue Geschmackserlebnisse aus!
+      </p>
+      <p>
+        Jedes Rezept ist sorgfältig getestet und mit einfachen Anleitungen versehen, 
+        damit dein Backabenteuer zum Erfolg wird.
+      </p>
+    </div>
   </section>
 </Layout>
