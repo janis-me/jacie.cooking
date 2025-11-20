@@ -16,8 +16,10 @@ home.select('.home-content').style({
   zIndex: 1,
 });
 
-home.select('.main-card').style({
+home.select('article.recipe-card').style({
   backgroundColor: theme.surface,
   borderRadius: '10px',
   height: '200px',
+  textAlign: 'left',
+  padding: '0 20px',
 });

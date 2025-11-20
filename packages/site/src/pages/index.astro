@@ -1,16 +1,26 @@
 ---
+import { getCollection, getEntry } from 'astro:content';
+
 import Hero from '#components/Hero/Hero.astro';
 import Layout from '#layouts/Main.astro';
 
 import './index.css';
+
+const recipes = await getCollection('recipes');
 ---
 
 <Layout title="home - jacie.cooking" className="home">
   <Hero />
   <section class="home-content">
-    <div class="main-card"></div>
-    <div class="main-card"></div>
-    <div class="main-card"></div>
-    <div class="main-card"></div>
+    {
+      recipes.map(recipe => (
+        <article class="recipe-card">
+          <a href={`/recipes/${recipe.id}`} class="recipe-link">
+            <h2 class="recipe-title">{recipe.data.title}</h2>
+            {recipe.data.description && <p class="recipe-description">{recipe.data.description}</p>}
+          </a>
+        </article>
+      ))
+    }
   </section>
 </Layout>

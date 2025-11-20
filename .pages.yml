@@ -7,13 +7,14 @@ content:
     type: collection
     path: packages/site/src/pages/recipes
     view:
-      fields: [ title, description, published, createdAt, updatedAt, tags ]
+      fields: [title, description, published, createdAt, updatedAt, tags]
     fields:
       - { name: createdAt, label: Date, type: date }
       - { name: updatedAt, label: Date, type: date }
       - { name: title, label: Title, type: string, required: true }
       - { name: description, label: Description, type: string, required: true }
-      - { name: slug, label: Slug, type: string }
+      - { name: coverImage, label: Cover Image, type: image, required: true }
+      - { name: layout, label: Layout, type: string }
       - { name: published, label: Published, type: boolean }
       - { name: tags, label: Tags, type: string, list: true }
       - { name: body, label: Body, type: rich-text }
