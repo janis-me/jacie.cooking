@@ -1,0 +1,25 @@
+---
+import './NavMenu.css';
+
+const MENU_ITEMS = [
+  { href: '/', label: 'Home' },
+  { href: '/recipes', label: 'Recipes' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/about', label: 'About' },
+];
+
+const activePath = Astro.url.pathname;
+const activePage = MENU_ITEMS.find(item => activePath.startsWith(item.href))?.href || '/';
+---
+
+<nav id="nav-menu">
+  <ul>
+    {
+      MENU_ITEMS.map(({ href, label }) => (
+        <li class:list={[activePage === href ? 'nav-menu-item--active' : '']}>
+          <a href={href}>{label}</a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

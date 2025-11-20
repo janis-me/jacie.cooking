@@ -1,15 +1,22 @@
 import { select } from 'surimi';
 
-import { cursiveFont } from '#styles/mixins.css';
-import { themes } from '#styles/theme.css';
+import { theme } from '#styles/theme.css.ts';
 
-select('body').style({
-  margin: '0',
-  padding: '0',
-  backgroundColor: themes.pink.primaryDeep,
-  color: themes.pink.primaryText,
-  width: '100vw',
-  textAlign: 'center',
+const home = select('.home');
+
+home.style({
+  backgroundColor: theme.surfaceDeep,
 });
 
-select('h1').use(cursiveFont);
+home.select('.home-content').style({
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+  gap: '20px',
+  padding: '40px',
+});
+
+home.select('.main-card').style({
+  backgroundColor: theme.surface,
+  borderRadius: '10px',
+  height: '200px',
+});

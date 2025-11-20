@@ -1,0 +1,46 @@
+---
+import './ThemeSwitcher.css';
+---
+
+<menu id="theme-switcher">
+  <button class="pink">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <path
+        fill="currentColor"
+        d="M51.3,-51.3C67.4,-35.1,82.2,-17.6,79.5,-2.7C76.8,12.1,56.6,24.3,40.4,34.1C24.3,43.8,12.1,51.3,-2.9,54.2C-18,57.1,-35.9,55.5,-50.3,45.7C-64.7,35.9,-75.5,18,-74.6,0.8C-73.8,-16.3,-61.3,-32.5,-46.9,-48.8C-32.5,-65,-16.3,-81.2,0.6,-81.9C17.6,-82.5,35.1,-67.6,51.3,-51.3Z"
+        transform="translate(100 100)"></path>
+    </svg>
+  </button>
+
+  <button class="blue">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <path
+        fill="currentColor"
+        d="M46.1,-49.1C55.6,-36.6,56.3,-18.3,55.3,-1C54.3,16.3,51.6,32.6,42.1,48C32.6,63.4,16.3,77.8,-2.1,79.9C-20.5,82.1,-41.1,71.8,-56,56.5C-70.9,41.1,-80.2,20.5,-80,0.1C-79.9,-20.3,-70.4,-40.6,-55.5,-53.2C-40.6,-65.7,-20.3,-70.6,-1,-69.6C18.3,-68.5,36.6,-61.7,46.1,-49.1Z"
+        transform="translate(100 100)"></path>
+    </svg>
+  </button>
+
+  <button class="green">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <path
+        fill="currentColor"
+        d="M48.1,-50.4C59.6,-36.6,64.4,-18.3,62.2,-2.1C60.1,14,51,28,39.5,39.6C28,51.2,14,60.4,0.2,60.3C-13.7,60.1,-27.3,50.5,-39.5,38.9C-51.8,27.3,-62.6,13.7,-62.7,-0.1C-62.8,-13.9,-52.2,-27.8,-40,-41.6C-27.8,-55.5,-13.9,-69.3,2.2,-71.5C18.3,-73.7,36.6,-64.3,48.1,-50.4Z"
+        transform="translate(100 100)"></path>
+    </svg>
+  </button>
+</menu>
+
+<script>
+  import { setTheme } from '@janis.me/themed/js';
+
+  const themeSwitcher = document.getElementById('theme-switcher');
+  const buttons = themeSwitcher?.querySelectorAll('button');
+
+  buttons?.forEach(button => {
+    button.addEventListener('click', () => {
+      const theme = button.className;
+      setTheme(theme);
+    });
+  });
+</script>

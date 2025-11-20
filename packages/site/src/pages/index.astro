@@ -1,10 +1,16 @@
 ---
+import Hero from '#components/Hero/Hero.astro';
 import Layout from '#layouts/Main.astro';
 
 import './index.css';
 ---
 
-<Layout title="home - jacie.cooking">
-  <h1>jacie.cooking!</h1>
-  <h2>Site still in the making</h2>
+<Layout title="home - jacie.cooking" className="home">
+  <Hero />
+  <section class="home-content">
+    <div class="main-card"></div>
+    <div class="main-card"></div>
+    <div class="main-card"></div>
+    <div class="main-card"></div>
+  </section>
 </Layout>
