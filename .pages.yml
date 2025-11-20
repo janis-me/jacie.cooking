@@ -1,11 +1,11 @@
 media:
-  input: public
+  input: packages/site/public
   output: /
 content:
   - name: recipes
     label: Recipes
     type: collection
-    path: src/content/recipes
+    path: packages/site/src/pages/recipes
     view:
       fields: [ title, description, published, createdAt, updatedAt, tags ]
     fields:
