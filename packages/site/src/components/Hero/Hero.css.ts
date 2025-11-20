@@ -3,7 +3,7 @@ import { keyframes, select } from 'surimi';
 import { primaryGradientBackground } from '#styles/mixins.css';
 import { theme } from '#styles/theme.css';
 
-const wavesAnimation = keyframes('waves').from({ translate: 0 }).to({ translate: '-70%' });
+const wavesAnimation = keyframes('waves').from({ maskPosition: 'bottom left' }).to({ maskPosition: 'bottom right' });
 const wavesBounce = keyframes('waves-bounce')
   .from({ transform: 'translateY(0px)' })
   .to({ transform: 'translateY(20px)' });
@@ -22,24 +22,29 @@ hero.style({
   overflow: 'hidden',
 });
 
+hero.select('.hero-content').style({
+  height: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+});
+
 hero.select('.hero-logo').style({
   width: '200px',
   height: 'min-content',
-  margin: '15vh auto 0 auto',
+  position: 'absolute',
+  top: '10vh',
   animation: `${logoAnimation} 500ms ease-out forwards`,
 });
 
 const waves = hero.select('.hero-waves').style({
-  color: theme.surfaceDeep,
   position: 'absolute',
   bottom: '0',
   left: '0',
-  marginBottom: '-10vh',
   width: '100%',
-});
-
-waves.select('svg').style({
-  display: 'block',
-  width: '500%',
+  height: '200px',
+  mask: 'url("/hero-waves.svg") repeat-x bottom',
+  backgroundColor: theme.surfaceDeep,
   animation: `${wavesAnimation} 30s linear alternate infinite, ${wavesBounce} 2s ease-in-out alternate infinite`,
 });

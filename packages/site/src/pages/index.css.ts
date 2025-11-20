@@ -13,6 +13,7 @@ home.select('.home-content').style({
   gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
   gap: '20px',
   padding: '40px',
+  zIndex: 1,
 });
 
 home.select('.main-card').style({
