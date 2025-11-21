@@ -6,16 +6,6 @@ ignoredBuiltDependencies:
   - esbuild
   - sharp
 
-supportedArchitectures:
-  os:
-    - linux
-  cpu:
-    - x64
-    - arm64
-  libc:
-    - musl
-    - glibc
-
 catalogs:
   build:
     vite: ^7.2.2
