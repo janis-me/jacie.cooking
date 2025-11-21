@@ -1,4 +1,5 @@
 ---
+import Header from '#components/Header/Header.astro';
 import ThemeSwitcher from '#components/ThemeSwitcher/ThemeSwitcher.astro';
 
 import '@fontsource/lily-script-one';
@@ -8,6 +9,8 @@ import './Main.css';
 
 const { title, description, className } = Astro.props;
 
+const hasTitle = Astro.slots.has('header-title');
+const hasFilters = Astro.slots.has('header-extra');
 const metaDescription = description || 'jacie.cooking';
 ---
 
@@ -29,6 +32,10 @@ const metaDescription = description || 'jacie.cooking';
 
   <body>
     <ThemeSwitcher />
+    <Header>
+      {hasTitle && <slot name="header-title" slot={hasTitle && 'title'} />}
+      {hasFilters && <slot name="header-extra" slot={hasFilters && 'extra'} />}
+    </Header>
     <main class:list={[className, 'container']}>
       <slot />
     </main>

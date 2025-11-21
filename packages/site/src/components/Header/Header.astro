@@ -1,0 +1,84 @@
+---
+import NavMenu from '#components/NavMenu/NavMenu.astro';
+
+import Logo from '../../assets/logo.svg';
+
+import './Header.css';
+
+const hasTitle = Astro.slots.has('title');
+const hasFilters = Astro.slots.has('extra');
+---
+
+<header id="header" class="header" data-has-title={hasTitle} data-has-filters={hasFilters}>
+  <div class="header-top">
+    <div class="header-logo-container">
+      <a href="/">
+        <Logo class="header-logo" />
+      </a>
+    </div>
+
+    {
+      hasTitle && (
+        <div class="header-page-info">
+          <slot name="title" />
+        </div>
+      )
+    }
+  </div>
+
+  <div class="header-waves"></div>
+
+  <div class="header-bottom">
+    <div class="header-bottom-inner">
+      {
+        !hasFilters && (
+          <div class="header-nav-center">
+            <NavMenu />
+          </div>
+        )
+      }
+
+      {
+        hasFilters && (
+          <>
+            <div class="header-nav-left">
+              <NavMenu />
+            </div>
+            <div class="header-filters-right">
+              <slot name="extra" />
+            </div>
+          </>
+        )
+      }
+    </div>
+  </div>
+</header>
+
+<script>
+  // Add scrolled class for smooth transitions
+  let ticking = false;
+
+  function updateHeader() {
+    const header = document.getElementById('header');
+    if (!header) return;
+
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+    ticking = false;
+  }
+
+  function requestTick() {
+    if (!ticking) {
+      window.requestAnimationFrame(updateHeader);
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', requestTick, { passive: true });
+
+  // Check initial state
+  updateHeader();
+</script>

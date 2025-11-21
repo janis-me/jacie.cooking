@@ -14,7 +14,7 @@ content:
       - { name: title, label: Title, type: string, required: true }
       - { name: description, label: Description, type: string, required: true }
       - { name: coverImage, label: Cover Image, type: image, required: true }
-      - { name: layout, label: Layout, type: string }
       - { name: published, label: Published, type: boolean }
+      - { name: featured, label: Featured, type: boolean }
       - { name: tags, label: Tags, type: string, list: true }
       - { name: body, label: Body, type: rich-text }

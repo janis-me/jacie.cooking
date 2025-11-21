@@ -23,6 +23,10 @@ const { Content } = await render(recipe);
 ---
 
 <Layout title={`${recipe.data.title} - jacie.cooking`} description={recipe.data.description} className="recipe-detail">
+  <Fragment slot="header-title">
+    <h1 class="recipe-title">{recipe.data.title}</h1>
+  </Fragment>
+
   <article class="recipe-article">
     <header class="recipe-header">
       {
@@ -33,7 +37,6 @@ const { Content } = await render(recipe);
         )
       }
       <div class="recipe-header-content">
-        <h1 class="recipe-title">{recipe.data.title}</h1>
         {recipe.data.description && <p class="recipe-description">{recipe.data.description}</p>}
         <div class="recipe-meta">
           <time datetime={recipe.data.createdAt.toISOString()}>

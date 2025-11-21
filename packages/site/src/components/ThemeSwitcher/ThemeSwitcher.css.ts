@@ -3,10 +3,15 @@ import { select } from 'surimi';
 import { themes } from '#styles/theme.css.ts';
 
 const themeSwitcher = select('#theme-switcher').style({
-  position: 'absolute',
-  top: '0',
+  position: 'fixed',
+  top: '30px',
   right: '16px',
   zIndex: 1000,
+  transition: 'top 400ms ease',
+});
+
+select('html:has(.header.scrolled)').select('#theme-switcher').style({
+  top: '24px',
 });
 
 const themeButton = select('button').style({

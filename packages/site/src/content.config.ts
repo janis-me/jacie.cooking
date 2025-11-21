@@ -8,7 +8,8 @@ const recipeSchema = z.object({
   description: z.string(),
   coverImage: z.string(),
   published: z.boolean().default(false),
-  tags: z.array(z.string()),
+  featured: z.boolean().default(false),
+  tags: z.array(z.string()).default([]),
 });
 
 const recipes = defineCollection({

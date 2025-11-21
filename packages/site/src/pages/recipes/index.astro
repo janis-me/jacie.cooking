@@ -12,26 +12,20 @@ const allTags = [...new Set(recipes.flatMap(recipe => recipe.data.tags))].sort()
 ---
 
 <Layout title="recipes - jacie.cooking" className="recipes-page">
-  <section class="recipes-header">
-    <h1 class="recipes-title">Alle Rezepte</h1>
-    <p class="recipes-subtitle">Entdecke leckere Rezepte nach deinem Geschmack</p>
-  </section>
+  <Fragment slot="header-title">
+    <h1 class="page-title">Alle Rezepte</h1>
+  </Fragment>
 
-  <section class="filter-section">
-    <div class="filter-container">
-      <h2 class="filter-title">Filter nach Tags:</h2>
-      <div class="tags-container">
-        <button class="tag-button" data-tag="all"> Alle </button>
-        {
-          allTags.map(tag => (
-            <button class="tag-button" data-tag={tag}>
-              {tag}
-            </button>
-          ))
-        }
-      </div>
-    </div>
-  </section>
+  <Fragment slot="header-extra">
+    <button class="tag-button" data-tag="all"> Alle </button>
+    {
+      allTags.map(tag => (
+        <button class="tag-button" data-tag={tag}>
+          {tag}
+        </button>
+      ))
+    }
+  </Fragment>
 
   <section class="recipes-content">
     {

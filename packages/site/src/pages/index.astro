@@ -1,19 +1,19 @@
 ---
-import { getCollection, getEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 
-import Hero from '#components/Hero/Hero.astro';
 import Layout from '#layouts/Main.astro';
 
 import './index.css';
 
 const recipes = await getCollection('recipes');
+const featuredRecipes = recipes.filter(recipe => recipe.data.featured);
 ---
 
 <Layout title="home - jacie.cooking" className="home">
-  <Hero />
   <section class="home-content">
+    <h2>Beliebte Rezepte:</h2>
     {
-      recipes.map(recipe => (
+      featuredRecipes.map(recipe => (
         <article class="recipe-card" style={`background-image: url(${recipe.data.coverImage})`}>
           <a href={`/recipes/${recipe.id}`} class="recipe-link">
             <h2 class="recipe-title">{recipe.data.title}</h2>
@@ -23,19 +23,18 @@ const recipes = await getCollection('recipes');
       ))
     }
   </section>
-  
+
   <section class="bottom-section">
     <div class="bottom-waves"></div>
     <div class="bottom-content">
       <h2>Willkommen bei Jacie's Küche! 🍪</h2>
       <p>
-        Hier findest du leckere Rezepte, die mit Liebe kreiert wurden. 
-        Von klassischen Cookies bis hin zu kreativen Backideen – 
-        lass dich inspirieren und probiere neue Geschmackserlebnisse aus!
+        Hier findest du leckere Rezepte, die mit Liebe kreiert wurden. Von klassischen Cookies bis hin zu kreativen
+        Backideen – lass dich inspirieren und probiere neue Geschmackserlebnisse aus!
       </p>
       <p>
-        Jedes Rezept ist sorgfältig getestet und mit einfachen Anleitungen versehen, 
-        damit dein Backabenteuer zum Erfolg wird.
+        Jedes Rezept ist sorgfältig getestet und mit einfachen Anleitungen versehen, damit dein Backabenteuer zum Erfolg
+        wird.
       </p>
     </div>
   </section>

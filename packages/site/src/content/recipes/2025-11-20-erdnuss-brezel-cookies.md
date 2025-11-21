@@ -5,6 +5,7 @@ title: Erdnuss-Brezel cookies
 description: Leckere, softe Erdnuss-Brezel cookies!
 coverImage: /subway-cookies.webp
 published: false
+featured: true
 tags:
   - desert
 ---

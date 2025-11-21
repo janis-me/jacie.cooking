@@ -4,7 +4,7 @@ function camelCaseToKebabCase(str: string) {
   return str.replace(/([A-Z])/g, '-$1').toLowerCase();
 }
 
-const colors = {
+export const colors = {
   gray: {
     50: '#f2f2f2',
     100: '#e6e6e6',

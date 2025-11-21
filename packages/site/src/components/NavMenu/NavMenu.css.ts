@@ -7,11 +7,6 @@ const navMenu = select('#nav-menu').style({
   display: 'flex',
   gap: '15px',
   justifyContent: 'center',
-  padding: '10px 0',
-  position: 'absolute',
-  bottom: 0,
-  zIndex: 2,
-  width: '100%',
 });
 
 navMenu.select('ul').style({
@@ -20,11 +15,21 @@ navMenu.select('ul').style({
   padding: '0',
   display: 'flex',
   gap: '15px',
+  flexWrap: 'wrap',
 });
 
 const menuItem = navMenu.select('li').style({
   backgroundColor: theme.surface,
-  padding: '8px 12px',
+  padding: '8px 14px',
+  transition: 'all 300ms ease',
+});
+
+select('#header.scrolled #nav-menu li').style({
+  padding: '6px 12px',
+});
+
+menuItem.style({
+  border: `4px solid ${theme.surfaceDeep}`,
 });
 
 menuItem.is('.nav-menu-item--active').style({
@@ -36,4 +41,10 @@ navMenu.select('a').use(cursiveFont).style({
   color: 'inherit',
   fontWeight: 'bold',
   borderRadius: '5px',
+  fontSize: '1rem',
+  transition: 'font-size 300ms ease',
+});
+
+select('#header.scrolled #nav-menu a').style({
+  fontSize: '0.9rem',
 });

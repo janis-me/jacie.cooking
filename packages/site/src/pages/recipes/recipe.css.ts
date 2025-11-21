@@ -1,6 +1,6 @@
 import { select } from 'surimi';
 
-import { theme } from '#styles/theme.css.ts';
+import { colors, theme } from '#styles/theme.css';
 
 const recipeDetail = select('.recipe-detail');
 
@@ -46,7 +46,7 @@ header.select('.recipe-title').style({
   fontSize: '2.5rem',
   fontWeight: '700',
   margin: '0 0 16px 0',
-  color: theme.primaryTextDeep,
+  color: colors.gray[700],
   lineHeight: '1.2',
 });
 

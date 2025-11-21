@@ -5,6 +5,7 @@ title: Veganer end-level Avocado toast
 description: Mit Frischkäse und Balsamico
 coverImage: /vegan-avocado-toast-34.jpg
 published: false
+featured: false
 tags:
   - herzhaft
 ---

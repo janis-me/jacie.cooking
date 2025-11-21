@@ -1,6 +1,6 @@
 import { select } from 'surimi';
 
-import { theme } from '#styles/theme.css.ts';
+import { colors, theme } from '#styles/theme.css';
 
 const recipesPage = select('.recipes-page');
 
@@ -9,67 +9,29 @@ recipesPage.style({
   minHeight: '100vh',
 });
 
-// Header section
-const header = recipesPage.select('.recipes-header');
-
-header.style({
-  backgroundColor: theme.background,
-  padding: '60px 40px 40px',
-  textAlign: 'center',
+select('#header.scrolled .page-title').style({
+  fontSize: '1.5rem',
 });
 
-header.select('.recipes-title').style({
-  fontSize: '2.5rem',
-  fontWeight: '700',
-  margin: '0 0 12px 0',
-  color: theme.primaryTextDeep,
-});
-
-header.select('.recipes-subtitle').style({
-  fontSize: '1.2rem',
-  margin: '0',
-  color: theme.primaryText,
-});
-
-// Filter section
-const filterSection = recipesPage.select('.filter-section');
-
-filterSection.style({
-  backgroundColor: theme.surface,
-  padding: '30px 40px',
-  borderBottom: `2px solid ${theme.surfaceDeep}`,
-});
-
-filterSection.select('.filter-container').style({
-  maxWidth: '1400px',
-  margin: '0 auto',
-});
-
-filterSection.select('.filter-title').style({
-  fontSize: '1.1rem',
-  fontWeight: '600',
-  margin: '0 0 16px 0',
-  color: theme.primaryTextDeep,
-});
-
-filterSection.select('.tags-container').style({
-  display: 'flex',
-  flexWrap: 'wrap',
-  gap: '12px',
-});
-
-const tagButton = filterSection.select('.tag-button');
+// Tag filter buttons
+const tagButton = select('.tag-button');
 
 tagButton.style({
-  padding: '10px 20px',
-  borderRadius: '24px',
+  padding: '8px 16px',
+  borderRadius: '20px',
   border: `2px solid ${theme.primary}`,
   backgroundColor: theme.background,
   color: theme.primaryText,
-  fontSize: '0.95rem',
+  fontSize: '0.9rem',
   fontWeight: '500',
   cursor: 'pointer',
-  transition: 'all 200ms ease',
+  transition: 'all 300ms ease',
+  whiteSpace: 'nowrap',
+});
+
+select('#header.scrolled .tag-button').style({
+  padding: '6px 12px',
+  fontSize: '0.8rem',
 });
 
 tagButton.where(':hover').style({
@@ -77,6 +39,10 @@ tagButton.where(':hover').style({
   color: theme.background,
   transform: 'translateY(-2px)',
   boxShadow: `0 4px 8px color-mix(in srgb, ${theme.primaryTextDeep} 15%, transparent)`,
+});
+
+select('#header.scrolled .tag-button:hover').style({
+  transform: 'translateY(-1px)',
 });
 
 tagButton.where('.active').style({
