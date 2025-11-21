@@ -1,9 +1,6 @@
 {
   "name": "jacie",
   "compatibility_date": "2025-11-08",
-  "build": {
-    "command": "pnpm run build",
-  },
   "assets": {
     "directory": "./packages/site/dist",
   },
