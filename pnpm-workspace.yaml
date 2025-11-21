@@ -8,7 +8,7 @@ ignoredBuiltDependencies:
 
 catalogs:
   build:
-    vite: ^7.2.2
+    vite: "npm:rolldown-vite@latest"
     "@astrojs/rss": "^4.0.13"
     "@astrojs/sitemap": "^3.6.0"
     "astro": "^5.15.9"

@@ -11,7 +11,6 @@ const featuredRecipes = recipes.filter(recipe => recipe.data.featured);
 
 <Layout title="home - jacie.cooking" className="home">
   <section class="home-content">
-    <h2>Beliebte Rezepte:</h2>
     {
       featuredRecipes.map(recipe => (
         <article class="recipe-card" style={`background-image: url(${recipe.data.coverImage})`}>

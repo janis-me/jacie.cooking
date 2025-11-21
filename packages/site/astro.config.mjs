@@ -14,19 +14,6 @@ const __dirname = dirname(__filename);
 export default defineConfig({
   site: 'https://jacie.cooking',
 
-  server: {
-    host: '127.0.0.1',
-    port: 4321,
-  },
-
-  image: {
-    service: passthroughImageService(),
-  },
-
-  build: {
-    inlineStylesheets: 'always',
-  },
-
   integrations: [
     sitemap(),
     webmanifest({
@@ -47,10 +34,5 @@ export default defineConfig({
 
   vite: {
     plugins: [surimi()],
-    build: {
-      rollupOptions: {
-        external: ['sharp'],
-      },
-    },
   },
 });
