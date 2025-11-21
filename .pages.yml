@@ -5,7 +5,7 @@ content:
   - name: recipes
     label: Recipes
     type: collection
-    path: packages/site/src/pages/recipes
+    path: packages/site/src/content/recipes
     view:
       fields: [title, description, published, createdAt, updatedAt, tags]
     fields:

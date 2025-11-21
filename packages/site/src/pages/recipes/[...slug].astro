@@ -1,0 +1,67 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+
+import Layout from '#layouts/Main.astro';
+
+import './recipe.css';
+
+export async function getStaticPaths() {
+  const recipes = await getCollection('recipes');
+
+  return recipes.map(recipe => ({
+    params: { slug: recipe.id },
+    props: { recipe },
+  }));
+}
+
+interface Props {
+  recipe: CollectionEntry<'recipes'>;
+}
+
+const { recipe } = Astro.props;
+const { Content } = await render(recipe);
+---
+
+<Layout title={`${recipe.data.title} - jacie.cooking`} description={recipe.data.description} className="recipe-detail">
+  <article class="recipe-article">
+    <header class="recipe-header">
+      {
+        recipe.data.coverImage && (
+          <div class="recipe-cover">
+            <img src={recipe.data.coverImage} alt={recipe.data.title} />
+          </div>
+        )
+      }
+      <div class="recipe-header-content">
+        <h1 class="recipe-title">{recipe.data.title}</h1>
+        {recipe.data.description && <p class="recipe-description">{recipe.data.description}</p>}
+        <div class="recipe-meta">
+          <time datetime={recipe.data.createdAt.toISOString()}>
+            {
+              recipe.data.createdAt.toLocaleDateString('de-DE', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })
+            }
+          </time>
+          {
+            recipe.data.tags && recipe.data.tags.length > 0 && (
+              <div class="recipe-tags">
+                {recipe.data.tags.map(tag => (
+                  <a href={`/recipes?tag=${tag}`} class="recipe-tag">
+                    {tag}
+                  </a>
+                ))}
+              </div>
+            )
+          }
+        </div>
+      </div>
+    </header>
+
+    <div class="recipe-content">
+      <Content />
+    </div>
+  </article>
+</Layout>

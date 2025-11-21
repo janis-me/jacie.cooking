@@ -7,13 +7,12 @@ const recipeSchema = z.object({
   title: z.string(),
   description: z.string(),
   coverImage: z.string(),
-  layout: z.string().optional(),
   published: z.boolean().default(false),
   tags: z.array(z.string()),
 });
 
 const recipes = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/pages/recipes' }),
+  loader: glob({ pattern: '**/*.md', base: './src/content/recipes' }),
   schema: recipeSchema,
 });
 

@@ -21,36 +21,38 @@ const allTags = [...new Set(recipes.flatMap(recipe => recipe.data.tags))].sort()
     <div class="filter-container">
       <h2 class="filter-title">Filter nach Tags:</h2>
       <div class="tags-container">
-        <button class="tag-button active" data-tag="all">
-          Alle
-        </button>
-        {allTags.map(tag => (
-          <button class="tag-button" data-tag={tag}>
-            {tag}
-          </button>
-        ))}
+        <button class="tag-button" data-tag="all"> Alle </button>
+        {
+          allTags.map(tag => (
+            <button class="tag-button" data-tag={tag}>
+              {tag}
+            </button>
+          ))
+        }
       </div>
     </div>
   </section>
 
   <section class="recipes-content">
-    {recipes.map(recipe => (
-      <article 
-        class="recipe-card" 
-        style={`background-image: url(${recipe.data.coverImage})`}
-        data-tags={recipe.data.tags.join(',')}
-      >
-        <a href={`/recipes/${recipe.id}`} class="recipe-link">
-          <h2 class="recipe-title">{recipe.data.title}</h2>
-          {recipe.data.description && <p class="recipe-description">{recipe.data.description}</p>}
-          <div class="recipe-tags">
-            {recipe.data.tags.map(tag => (
-              <span class="recipe-tag">{tag}</span>
-            ))}
-          </div>
-        </a>
-      </article>
-    ))}
+    {
+      recipes.map(recipe => (
+        <article
+          class="recipe-card"
+          style={`background-image: url(${recipe.data.coverImage})`}
+          data-tags={recipe.data.tags.join(',')}
+        >
+          <a href={`/recipes/${recipe.id}`} class="recipe-link">
+            <h2 class="recipe-title">{recipe.data.title}</h2>
+            {recipe.data.description && <p class="recipe-description">{recipe.data.description}</p>}
+            <div class="recipe-tags">
+              {recipe.data.tags.map(tag => (
+                <span class="recipe-tag">{tag}</span>
+              ))}
+            </div>
+          </a>
+        </article>
+      ))
+    }
   </section>
 
   <div class="no-results" style="display: none;">
@@ -58,7 +60,7 @@ const allTags = [...new Set(recipes.flatMap(recipe => recipe.data.tags))].sort()
   </div>
 
   <script>
-    // Filter functionality
+    // Filter functionality - fully client-side
     const tagButtons = document.querySelectorAll('.tag-button');
     const recipeCards = document.querySelectorAll('.recipe-card');
     const noResults = document.querySelector('.no-results');
@@ -69,7 +71,7 @@ const allTags = [...new Set(recipes.flatMap(recipe => recipe.data.tags))].sort()
       recipeCards.forEach(card => {
         const cardElement = card as HTMLElement;
         const cardTags = cardElement.dataset.tags?.split(',') || [];
-        
+
         if (selectedTag === 'all' || cardTags.includes(selectedTag)) {
           cardElement.style.display = '';
           visibleCount++;
@@ -82,20 +84,72 @@ const allTags = [...new Set(recipes.flatMap(recipe => recipe.data.tags))].sort()
       if (noResults) {
         (noResults as HTMLElement).style.display = visibleCount === 0 ? 'block' : 'none';
       }
+
+      // Update URL without reload
+      const url = new URL(window.location.href);
+      if (selectedTag === 'all') {
+        url.searchParams.delete('tag');
+      } else {
+        url.searchParams.set('tag', selectedTag);
+      }
+      window.history.pushState({}, '', url);
     }
 
-    tagButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        // Remove active class from all buttons
-        tagButtons.forEach(btn => btn.classList.remove('active'));
-        
-        // Add active class to clicked button
-        button.classList.add('active');
-        
-        // Filter recipes
+    function getInitialTagFromURL(): string {
+      // Read tag from URL on the client side
+      const params = new URLSearchParams(window.location.search);
+      return params.get('tag') || 'all';
+    }
+
+    function initializeFilters() {
+      const initialTag = getInitialTagFromURL();
+
+      // Set initial active state
+      tagButtons.forEach(button => {
         const tag = button.getAttribute('data-tag') || 'all';
-        filterRecipes(tag);
+        if (tag === initialTag) {
+          button.classList.add('active');
+        }
+
+        button.addEventListener('click', () => {
+          // Remove active class from all buttons
+          tagButtons.forEach(btn => btn.classList.remove('active'));
+
+          // Add active class to clicked button
+          button.classList.add('active');
+
+          // Filter recipes
+          filterRecipes(tag);
+        });
       });
+
+      // Apply initial filter if tag is in URL
+      if (initialTag !== 'all') {
+        filterRecipes(initialTag);
+      }
+    }
+
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initializeFilters);
+    } else {
+      initializeFilters();
+    }
+
+    // Handle browser back/forward buttons
+    window.addEventListener('popstate', () => {
+      const tag = getInitialTagFromURL();
+
+      // Update active button
+      tagButtons.forEach(button => {
+        button.classList.remove('active');
+        if (button.getAttribute('data-tag') === tag) {
+          button.classList.add('active');
+        }
+      });
+
+      // Apply filter
+      filterRecipes(tag);
     });
   </script>
 </Layout>
