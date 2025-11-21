@@ -26,6 +26,7 @@
     "@fortawesome/free-brands-svg-icons": "catalog:fonts",
     "@fortawesome/free-solid-svg-icons": "catalog:fonts",
     "@janis.me/themed": "catalog:build",
+    "@rolldown/binding-wasm32-wasi": "1.0.0-beta.51",
     "@types/node": "catalog:types",
     "@types/sanitize-html": "catalog:types",
     "@workspace/linter-config": "workspace:*",
