@@ -1,4 +1,6 @@
 ---
+createdAt: 2025-11-21
+updatedAt: 2025-11-21
 title: Veganer Gulasch mit Rotklohl und Klößen
 description: Super zart, deftig und eine unglaublich leckere Soße
 coverImage: /gulasch-knoedel-rotkohl-100~_t-1546857743448_v-16to9__retina.jpg
