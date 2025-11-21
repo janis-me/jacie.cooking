@@ -9,12 +9,12 @@ content:
     view:
       fields: [title, description, published, createdAt, updatedAt, tags]
     fields:
-      - { name: createdAt, label: Date, type: date }
-      - { name: updatedAt, label: Date, type: date }
+      - { name: createdAt, label: Date, type: date, required: true }
+      - { name: updatedAt, label: Date, type: date, required: true }
       - { name: title, label: Title, type: string, required: true }
       - { name: description, label: Description, type: string, required: true }
       - { name: coverImage, label: Cover Image, type: image, required: true }
-      - { name: published, label: Published, type: boolean }
-      - { name: featured, label: Featured, type: boolean }
-      - { name: tags, label: Tags, type: string, list: true }
-      - { name: body, label: Body, type: rich-text }
+      - { name: published, label: Published, type: boolean, required: true }
+      - { name: featured, label: Featured, type: boolean, required: true }
+      - { name: tags, label: Tags, type: string, list: true, required: true }
+      - { name: body, label: Body, type: rich-text, required: true }

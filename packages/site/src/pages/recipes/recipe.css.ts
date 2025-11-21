@@ -15,6 +15,7 @@ recipeArticle.style({
   maxWidth: '900px',
   margin: '0 auto',
   padding: '0',
+  textAlign: 'left',
 });
 
 // Header section
